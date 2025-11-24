@@ -136,7 +136,7 @@ export default function Navbar() {
               transition={{
                 duration: 0.3,
               }}
-              className="h-fit px-2 py-4 flex flex-col gap-4 text-2xl border-t-[1px] bg-brand-light rounded-[8px]"
+              className="h-fit px-2 py-2 flex flex-col gap-4 text-2xl border-t-[1px] bg-brand-light rounded-[8px]"
             >
               <p
                 onClick={() => {
@@ -214,7 +214,7 @@ export default function Navbar() {
               transition={{
                 duration: 0.3,
               }}
-              className="h-fit px-2 py-4 flex flex-col gap-4 text-xl border-t-[1px] rounded-[8px] bg-brand-light"
+              className="h-fit px-2 py-2 flex flex-col gap-4 text-xl border-t-[1px] rounded-[8px] bg-brand-light"
             >
               <div className="h-fit p-2 flex flex-col gap-8">
                 {projects.slice(0, 4).map((project, index) => (
