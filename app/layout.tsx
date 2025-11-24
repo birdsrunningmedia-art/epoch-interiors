@@ -26,7 +26,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} relative`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} relative min-h-screen bg-brand-light text-brand-dark`}
+      >
         <Navbar />
         {children}
         <Footer />

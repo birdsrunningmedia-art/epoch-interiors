@@ -1,7 +1,8 @@
-import { Project } from "@/types/types";
+import { TProject } from "@/types/types";
 
-export const projects: Project[] = [
+export const projects: TProject[] = [
   {
+    id: "1",
     title: "The Quiet Residence",
     projectImageUrls: [
       "/images/image1.jpg",
@@ -14,6 +15,7 @@ export const projects: Project[] = [
   },
 
   {
+    id: "2",
     title: "House of Stillness",
     projectImageUrls: [
       "/images/image4.jpg",
@@ -26,6 +28,7 @@ export const projects: Project[] = [
   },
 
   {
+    id: "3",
     title: "The Calm Apartment",
     projectImageUrls: [
       "/images/image7.jpg",
@@ -38,6 +41,7 @@ export const projects: Project[] = [
   },
 
   {
+    id: "4",
     title: "The Soft Light Project",
     projectImageUrls: [
       "/images/image10.jpg",
@@ -50,6 +54,7 @@ export const projects: Project[] = [
   },
 
   {
+    id: "5",
     title: "The Balanced Home",
     projectImageUrls: [
       "/images/image13.jpg",
@@ -62,6 +67,7 @@ export const projects: Project[] = [
   },
 
   {
+    id: "6",
     title: "The Neutral Sanctuary",
     projectImageUrls: [
       "/images/image16.jpg",
@@ -74,6 +80,7 @@ export const projects: Project[] = [
   },
 
   {
+    id: "7",
     title: "The Linearity Project",
     projectImageUrls: [
       "/images/image19.jpg",
@@ -86,6 +93,7 @@ export const projects: Project[] = [
   },
 
   {
+    id: "8",
     title: "The Form & Function Loft",
     projectImageUrls: [
       "/images/image22.jpg",
@@ -98,6 +106,7 @@ export const projects: Project[] = [
   },
 
   {
+    id: "9",
     title: "The Structure House",
     projectImageUrls: [
       "/images/image25.jpg",
@@ -110,6 +119,7 @@ export const projects: Project[] = [
   },
 
   {
+    id: "10",
     title: "The Monolith Suite",
     projectImageUrls: [
       "/images/image28.jpg",
@@ -122,6 +132,7 @@ export const projects: Project[] = [
   },
 
   {
+    id: "11",
     title: "The Geometry Residence",
     projectImageUrls: [
       "/images/image31.jpg",
@@ -134,6 +145,7 @@ export const projects: Project[] = [
   },
 
   {
+    id: "12",
     title: "The Axis Apartment",
     projectImageUrls: [
       "/images/image34.jpg",
