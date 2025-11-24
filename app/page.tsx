@@ -3,6 +3,8 @@ import Hero from "@/components/sections/Hero";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { projects } from "@/data/project";
+import { homePageContent } from "@/data/homePage";
 
 export default function Page() {
   return (
@@ -10,51 +12,28 @@ export default function Page() {
       <Hero />
 
       {/* Subsection */}
-      <section>
-        <div className="relative">
-          <div className="absolute"></div>
-          <Image
-            src={"/images/image5.jpg"}
-            alt={"interior image"}
-            width={6000}
-            height={4000}
-            className="w-full object-cover"
-          />
-        </div>
-        <div className="relative">
-          <div className="absolute"></div>
-          <Image
-            src={"/images/image29.jpg"}
-            alt={"interior image"}
-            width={6000}
-            height={4000}
-            className="w-full object-cover"
-          />
-        </div>
-        <div className="relative">
-          <div className="absolute"></div>
-          <Image
-            src={"/images/image12.jpg"}
-            alt={"interior image"}
-            width={6000}
-            height={4000}
-            className="w-full object-cover"
-          />
-        </div>
-        <div className="relative">
-          <div className="absolute"></div>
-          <Image
-            src={"/images/image28.jpg"}
-            alt={"interior image"}
-            width={6000}
-            height={4000}
-            className="w-full object-cover"
-          />
-        </div>
+      <section className="relative">
+        {projects.slice(0, 4).map((project, index) => (
+          <div key={index} className="relative h-[450px]">
+            <Image
+              src={project.projectImageUrls[0]}
+              alt={project.title}
+              fill
+              className="object-cover object-center"
+            />
+            <div className="absolute inset-0 bg-brand-dark opacity-20">
+            </div>
+            <div className="absolute inset-0 text-brand-light flex flex-col justify-end p-2 gap-2">
+              <h2 className="text-xl underline">{homePageContent.subHeadingText[index].mainText}</h2>
+              <p>{homePageContent.subHeadingText[index].smallerText}</p>
+            </div>
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.05)_1px,transparent_0)] bg-[length:3px_3px] pointer-events-none"></div>
+          </div>
+        ))}
       </section>
 
       {/* view more projects button */}
-      <div>
+      <div className="flex justify-end p-4 text-xl underline">
         <Link href={"/projects"}>
           <p>View more of our projects</p>
         </Link>
