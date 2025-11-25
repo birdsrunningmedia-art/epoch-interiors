@@ -8,6 +8,12 @@ module.exports = {
   ],
   theme: {
   	extend: {
+		boxShadow: {
+        sm: "0 2px 6px rgba(0,0,0,0.08)",
+        md: "0 4px 12px rgba(0,0,0,0.12)",
+        lg: "0 8px 24px rgba(0,0,0,0.18)",
+        light: "0 0 10px rgba(255,255,255,0.05)", // for dark mode surfaces
+      },
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
@@ -57,7 +63,8 @@ module.exports = {
 
 			brand: {
 				light: "#FFFFFF",
-				dark: "#1C1C1C"
+				dark: "#1C1C1C",
+				gold: "#C7A567"
 			}
   		}
   	}

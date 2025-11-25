@@ -45,24 +45,28 @@ export default function Navbar() {
 
   return (
     <>
-      {open ||
-        (hoverProject && (
-          <Card
-            className="fixed top-0 left-0 bg-brand-dark opacity-65 h-screen w-full z-10 rounded-none"
-            onClick={(e) => {
-              e.stopPropagation();
-              setOpen(false);
-            }}
-          ></Card>
-        ))}
+      {(open || hoverProject) && (
+        <Card
+          className="fixed top-0 left-0 bg-brand-dark opacity-65 h-screen w-full z-10 rounded-none"
+          onClick={(e) => {
+            e.stopPropagation();
+            setOpen(false);
+          }}
+        ></Card>
+      )}
 
       {/* Entire nav */}
       <nav
         onMouseLeave={() => setHoverProject(false)}
-        className="fixed top-4 md:top-12 left-1/2 -translate-x-1/2 z-20  w-[95%] max-w-[600px]"
+        className="fixed top-3 md:top-12 left-1/2 -translate-x-1/2 z-20  w-[95%] max-w-[600px]"
       >
-        <div className="flex items-center sm:gap-16 justify-between nav-text p-2 rounded-[8px] bg-brand-light">
-          <Link href={"/"}>
+        <div className="flex items-center sm:gap-16 justify-between nav-text p-2 rounded-[8px] bg-brand-light border border-black/10 shadow-lg backdrop-blur-sm">
+          <Link
+            href={"/"}
+            onClick={() => {
+              setOpen(false);
+            }}
+          >
             <Image
               src={"/images/logo.png"}
               alt={"logo"}
@@ -118,7 +122,7 @@ export default function Navbar() {
             </Link>
           </div>
 
-          <Button className="nav-text">Contact us</Button>
+          <Button className="nav-text hover:bg-brand-gold hover:scale-105 transition-all duration-300">Contact us</Button>
         </div>
 
         <AnimatePresence mode="wait">
@@ -132,42 +136,44 @@ export default function Navbar() {
                 opacity: 1,
                 y: 0,
               }}
-              
               exit={{ opacity: 0 }}
               transition={{
                 duration: 0.3,
               }}
-              className="h-fit px-2 py-2 flex flex-col gap-4 text-2xl border-t-[1px] bg-brand-light rounded-[8px]"
+              className="h-fit px-2 py-4 flex flex-col gap-6 text-2xl border-t-[1px] bg-brand-light border rounded-[8px] border-black/10 backdrop-blur-sm"
             >
-              <p
+              <Link
+                href={"/projects"}
                 onClick={() => {
-                  router.push("/projects");
                   setOpen(false);
                 }}
-                className="hover:opacity-65 cursor-pointer hover:scale-95 w-fit"
               >
-                PROJECTS
-              </p>
+                <p className="hover:opacity-65 cursor-pointer hover:scale-95 w-fit">
+                  PROJECTS
+                </p>
+              </Link>
 
-              <p
+              <Link
+                href={"/our-services"}
                 onClick={() => {
-                  router.push("/our-services");
                   setOpen(false);
                 }}
-                className="hover:opacity-65 cursor-pointer hover:scale-95 w-fit"
               >
-                SERVICES
-              </p>
+                <p className="hover:opacity-65 cursor-pointer hover:scale-95 w-fit">
+                  SERVICES
+                </p>
+              </Link>
 
-              <p
+              <Link
+                href={"/about"}
                 onClick={() => {
-                  router.push("/about");
                   setOpen(false);
                 }}
-                className="hover:opacity-65 cursor-pointer hover:scale-95 w-fit"
               >
-                ABOUT
-              </p>
+                <p className="hover:opacity-65 cursor-pointer hover:scale-95 w-fit">
+                  ABOUT
+                </p>
+              </Link>
 
               <hr />
 
@@ -215,7 +221,7 @@ export default function Navbar() {
               transition={{
                 duration: 0.3,
               }}
-              className="h-fit px-2 py-2 flex flex-col gap-4 text-xl border-t-[1px] rounded-[8px] bg-brand-light"
+              className="h-fit px-2 py-2 flex flex-col gap-4 text-xl border-t-[1px] bg-brand-light border border-black/10 backdrop-blur-sm rounded-[8px]"
             >
               <div className="h-fit p-2 flex flex-col gap-8">
                 {projects.slice(0, 4).map((project, index) => (
