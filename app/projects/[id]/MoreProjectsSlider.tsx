@@ -1,12 +1,11 @@
 "use client";
 import React, { useState, useEffect, useRef, Ref } from "react";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowLeft } from "lucide-react";
+import { projects } from "@/data/project";
+import Image from "next/image";
+import Link from "next/link";
 
-import { testimonials } from "@/data/testimonials";
-
-export default function Testimonials() {
+export default function MoreProjectsSlider({ id }: { id: string }) {
   const [length, setLength] = useState(0);
   const [count, setCount] = useState(0);
   const carouselRef: Ref<HTMLDivElement> | null = useRef(null);
@@ -68,26 +67,29 @@ export default function Testimonials() {
         "
       >
         {/* Cards */}
-        {testimonials.map((testimonial, index) => (
-          <Card className="w-fit flex flex-col rounded-none" key={index}>
-            <CardHeader>
-              <Avatar>
-                <AvatarImage src={"https://github.com/shadcn.png"} />
-                <AvatarFallback>
-                  {testimonial.name.slice(0, 2).toUpperCase()}
-                </AvatarFallback>
-              </Avatar>
-            </CardHeader>
-            <CardContent className="flex flex-col gap-6 min-w-64">
-              <h3 className="underline">
-                {`${testimonial.name.split(" ")[0]} from ${
-                  testimonial.company
-                }`}
-              </h3>
-              <p>{testimonial.message}</p>
-            </CardContent>
-          </Card>
-        ))}
+        {projects
+          .filter((project) => project.id !== id)
+          .map((project, index) => (
+            <Link key={index} href={`/projects/${project.id}`}>
+              <div className="relative h-72 w-60 group overflow-hidden cursor-pointer">
+                <Image
+                  fill
+                  sizes="240px"
+                  src={project.projectImageUrls[0]}
+                  alt={project.title}
+                  className="object-cover object-center group-hover:scale-110 transition-all duration-300 "
+                />
+                {/* Optional overlay */}
+                <div className="absolute inset-0 bg-black/50 group-hover:bg-brand-dark/0 transition-all duration-300 " />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.05)_1px,transparent_0)] bg-[length:3px_3px] pointer-events-none"></div>
+
+                <div className="relative z-10 flex flex-col pt-32 px-4 h-full text-brand-light group-hover:opacity-0">
+                  <h1 className="text-[16px]">{project.title}</h1>
+                  <p className="text-[10px]">{project.projectSubtext}</p>
+                </div>
+              </div>
+            </Link>
+          ))}
       </div>
 
       <div className="flex justify-between gap-2">

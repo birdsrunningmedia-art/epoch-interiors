@@ -60,7 +60,7 @@ export default function Navbar() {
         onMouseLeave={() => setHoverProject(false)}
         className="fixed top-3 md:top-12 left-1/2 -translate-x-1/2 z-20  w-[95%] max-w-[600px]"
       >
-        <div className="flex items-center sm:gap-16 justify-between nav-text p-2 rounded-[8px] bg-brand-light border border-black/10 shadow-lg backdrop-blur-sm">
+        <div className="flex items-center sm:gap-16 justify-between nav-text p-2 rounded-none bg-brand-light border border-black/10 shadow-lg backdrop-blur-sm">
           <Link
             href={"/"}
             onClick={() => {
@@ -91,8 +91,8 @@ export default function Navbar() {
               <p
                 className={
                   pathname.startsWith("/projects")
-                    ? "underline hover:opacity-55 hover:scale-95"
-                    : "hover:opacity-55 hover:scale-95"
+                    ? "underline hover:opacity-55 hover:scale-95 transition-all duration-300"
+                    : "hover:opacity-55 hover:scale-95 transition-all duration-300" 
                 }
               >
                 PROJECTS
@@ -102,8 +102,8 @@ export default function Navbar() {
               <p
                 className={
                   pathname.startsWith("/our-services")
-                    ? "underline hover:opacity-55 hover:scale-95"
-                    : "hover:opacity-55 hover:scale-95"
+                    ? "underline hover:opacity-55 hover:scale-95 transition-all duration-300"
+                    : "hover:opacity-55 hover:scale-95 transition-all duration-300"
                 }
               >
                 SERVICES
@@ -113,8 +113,8 @@ export default function Navbar() {
               <p
                 className={
                   pathname.startsWith("/about")
-                    ? "underline hover:opacity-55 hover:scale-95"
-                    : "hover:opacity-55 hover:scale-95"
+                    ? "underline hover:opacity-55 hover:scale-95 transition-all duration-300"
+                    : "hover:opacity-55 hover:scale-95 transition-all duration-300"
                 }
               >
                 ABOUT
@@ -122,7 +122,7 @@ export default function Navbar() {
             </Link>
           </div>
 
-          <Button className="nav-text hover:bg-brand-gold hover:scale-105 transition-all duration-300">Contact us</Button>
+          <Button className="nav-text hover:bg-brand-gold rounded-none hover:scale-105 transition-all duration-300">Contact us</Button>
         </div>
 
         <AnimatePresence mode="wait">
@@ -140,7 +140,7 @@ export default function Navbar() {
               transition={{
                 duration: 0.3,
               }}
-              className="h-fit px-2 py-4 flex flex-col gap-6 text-2xl border-t-[1px] bg-brand-light border rounded-[8px] border-black/10 backdrop-blur-sm"
+              className="h-fit px-2 py-4 flex flex-col gap-6 text-2xl border-t-[1px] bg-brand-light border rounded-none border-black/10 backdrop-blur-sm"
             >
               <Link
                 href={"/projects"}
@@ -148,7 +148,7 @@ export default function Navbar() {
                   setOpen(false);
                 }}
               >
-                <p className="hover:opacity-65 cursor-pointer hover:scale-95 w-fit">
+                <p className="hover:opacity-65 cursor-pointer hover:scale-95 w-fit transition-all duration-300">
                   PROJECTS
                 </p>
               </Link>
@@ -159,7 +159,7 @@ export default function Navbar() {
                   setOpen(false);
                 }}
               >
-                <p className="hover:opacity-65 cursor-pointer hover:scale-95 w-fit">
+                <p className="hover:opacity-65 cursor-pointer hover:scale-95 w-fit transition-all duration-300">
                   SERVICES
                 </p>
               </Link>
@@ -170,7 +170,7 @@ export default function Navbar() {
                   setOpen(false);
                 }}
               >
-                <p className="hover:opacity-65 cursor-pointer hover:scale-95 w-fit">
+                <p className="hover:opacity-65 cursor-pointer hover:scale-95 w-fit transition-all duration-300">
                   ABOUT
                 </p>
               </Link>
@@ -183,14 +183,14 @@ export default function Navbar() {
                     setOpen(false);
                     router.push(`/projects/${projects[3].id}`);
                   }}
-                  className="flex items-center gap-4 hover:bg-slate-300/25 p-2 rounded-[8px] cursor-pointer"
+                  className="flex items-center gap-4 hover:bg-slate-300/25 p-2 rounded-none cursor-pointer transition-all duration-300"
                 >
                   <Image
                     src={projects[3].projectImageUrls[0]}
                     alt={projects[3].title}
                     width={150}
                     height={150}
-                    className="rounded-[8px]"
+                    className="rounded-none"
                   />
 
                   <div className="flex flex-col">
@@ -221,13 +221,13 @@ export default function Navbar() {
               transition={{
                 duration: 0.3,
               }}
-              className="h-fit px-2 py-2 flex flex-col gap-4 text-xl border-t-[1px] bg-brand-light border border-black/10 backdrop-blur-sm rounded-[8px]"
+              className="h-fit px-2 py-2 flex flex-col gap-4 text-xl border-t-[1px] bg-brand-light border border-black/10 backdrop-blur-sm rounded-none"
             >
               <div className="h-fit p-2 flex flex-col gap-8">
                 {projects.slice(0, 4).map((project, index) => (
                   <div
                     key={index}
-                    className="flex gap-4 items-center hover:opacity-65 hover:scale-95 cursor-pointer"
+                    className="flex gap-4 items-center hover:opacity-65 hover:scale-95 cursor-pointer transition-all duration-300"
                     onClick={() => {
                       router.push(`/projects/${project.id}`);
                       setHoverProject(false);
@@ -248,14 +248,14 @@ export default function Navbar() {
                     setOpen(false);
                     router.push(`/projects/${projects[3].id}`);
                   }}
-                  className="flex items-center gap-4 hover:bg-slate-300/25 p-2 rounded-[8px] cursor-pointer"
+                  className="flex items-center gap-4 hover:bg-slate-300/25 p-2 rounded-none cursor-pointer transition-all duration-300"
                 >
                   <Image
                     src={projects[3].projectImageUrls[0]}
                     alt={projects[3].title}
                     width={150}
                     height={150}
-                    className="rounded-[8px]"
+                    className="rounded-none"
                   />
 
                   <div className="flex flex-col">

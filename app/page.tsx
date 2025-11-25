@@ -16,7 +16,7 @@ export default function Page() {
       <section className="relative">
         {projects.slice(0, 4).map((project, index) => (
           <Link key={index} href={`/projects/${project.id}`}>
-            <div className="relative h-[400px] group overflow-hidden cursor-pointer">
+            <div className="relative h-[400px] w-full group overflow-hidden cursor-pointer">
               <Image
                 src={project.projectImageUrls[0]}
                 alt={project.title}
