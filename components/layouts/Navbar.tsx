@@ -92,7 +92,7 @@ export default function Navbar() {
                 className={
                   pathname.startsWith("/projects")
                     ? "underline hover:opacity-55 hover:scale-95 transition-all duration-300"
-                    : "hover:opacity-55 hover:scale-95 transition-all duration-300" 
+                    : "hover:opacity-55 hover:scale-95 transition-all duration-300"
                 }
               >
                 PROJECTS
@@ -122,7 +122,9 @@ export default function Navbar() {
             </Link>
           </div>
 
-          <Button className="nav-text hover:bg-brand-gold rounded-none hover:scale-105 transition-all duration-300">Contact us</Button>
+          <Button className="nav-text hover:bg-brand-gold rounded-none hover:scale-105 transition-all duration-300">
+            Contact us
+          </Button>
         </div>
 
         <AnimatePresence mode="wait">
@@ -194,9 +196,7 @@ export default function Navbar() {
                   />
 
                   <div className="flex flex-col">
-                    <h2 className="text-[14px] text-red-500">
-                      Random projects
-                    </h2>
+                    <h2 className="text-[14px] text-red-500">Random project</h2>
                     <h2 className="text-[14px]">{projects[3].title}</h2>
                     <p className="text-[10px]">{projects[3].projectSubtext}</p>
                   </div>
@@ -225,19 +225,20 @@ export default function Navbar() {
             >
               <div className="h-fit p-2 flex flex-col gap-8">
                 {projects.slice(0, 4).map((project, index) => (
-                  <div
-                    key={index}
-                    className="flex gap-4 items-center hover:opacity-65 hover:scale-95 cursor-pointer transition-all duration-300"
-                    onClick={() => {
-                      router.push(`/projects/${project.id}`);
-                      setHoverProject(false);
-                    }}
-                  >
-                    <p className="">{project.title.toLocaleUpperCase()}</p>
-                    <p className="text-[10px] font-thin">
-                      {project.projectSubtext.toLocaleUpperCase()}
-                    </p>
-                  </div>
+                  <Link key={index} href={`/projects/${project.id}`}>
+                    <div
+                      className="flex gap-4 items-center hover:opacity-65 hover:scale-95 cursor-pointer transition-all duration-300"
+                      onClick={() => {
+                        router.push(`/projects/${project.id}`);
+                        setHoverProject(false);
+                      }}
+                    >
+                      <p className="">{project.title.toLocaleUpperCase()}</p>
+                      <p className="text-[10px] font-thin">
+                        {project.projectSubtext.toLocaleUpperCase()}
+                      </p>
+                    </div>
+                  </Link>
                 ))}
               </div>
 
@@ -259,9 +260,7 @@ export default function Navbar() {
                   />
 
                   <div className="flex flex-col">
-                    <h2 className="text-[14px] text-red-500">
-                      Random projects
-                    </h2>
+                    <h2 className="text-[14px] text-red-500">Random project</h2>
                     <h2 className="text-[14px]">{projects[3].title}</h2>
                     <p className="text-[10px]">{projects[3].projectSubtext}</p>
                   </div>
