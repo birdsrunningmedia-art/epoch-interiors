@@ -12,13 +12,16 @@ import { AnimatePresence, motion } from "framer-motion";
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [hoverProject, setHoverProject] = useState(false);
+  const [viewAbout, setViewAbout] = useState(false);
+
+  // To do to add AnimatePresence on the about modal
 
   const pathname = usePathname();
   const router = useRouter();
 
   // Disable scroll when modal is open
   useEffect(() => {
-    if (open || hoverProject) {
+    if (open || hoverProject || viewAbout) {
       document.body.style.overflow = "hidden"; // lock scroll
     } else {
       document.body.style.overflow = "auto"; // unlock scroll
@@ -28,7 +31,7 @@ export default function Navbar() {
     return () => {
       document.body.style.overflow = "auto";
     };
-  }, [open, hoverProject]);
+  }, [open, hoverProject, viewAbout]);
 
   // Auto-close if screen exceeds mobile (>= 640px)
   useEffect(() => {
@@ -55,6 +58,47 @@ export default function Navbar() {
         ></Card>
       )}
 
+      {viewAbout && (
+        <div className="fixed top-0 left-0 bg-brand-light bg-opacity-95 min-h-screen w-full z-50 flex justify-center items-center flex-col gap-4">
+          <div className="flex w-full justify-end px-4 max-w-[600px]">
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setOpen(false);
+                setHoverProject(false);
+                setViewAbout(false);
+              }}
+              className="bg-brand-dark hover:bg-brand-gold hover:scale-105 transition-all duration-300 text-brand-light p-2 px-4"
+            >
+              CLOSE ABOUT
+            </button>
+          </div>
+          <div className="grid grid-cols-1 md:gird md:grid-cols-2 max-w-[600px] gap-4">
+            {/* About Image */}
+            <div className="relative h-[300px] md:h-[350px] w-full">
+              <Image
+                src={"/images/revolution.jpg"}
+                alt="about pic"
+                fill
+                className="object-center object-cover "
+              />
+            </div>
+            {/* About text */}
+            <div className="flex flex-col justify-center px-4 md:px-0 gap-4">
+              <h2 className="text-xl underline text-brand-dark">
+                About Epoch Interiors
+              </h2>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque
+                sequi commodi, architecto iusto quam quaerat quod doloremque
+                ratione iste odio? Molestiae odio voluptate quasi aliquid
+                quisquam harum dignissimos cum maiores.
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Entire nav */}
       <nav
         onMouseLeave={() => setHoverProject(false)}
@@ -70,6 +114,7 @@ export default function Navbar() {
             <Image
               src={"/images/logo.png"}
               alt={"logo"}
+              loading="eager"
               height={61}
               width={161}
               className="sm:w-[100px] w-[80px]"
@@ -109,20 +154,27 @@ export default function Navbar() {
                 SERVICES
               </p>
             </Link>
-            <Link href={"/about"}>
-              <p
-                className={
-                  pathname.startsWith("/about")
-                    ? "underline hover:opacity-55 hover:scale-95 transition-all duration-300"
-                    : "hover:opacity-55 hover:scale-95 transition-all duration-300"
-                }
-              >
-                ABOUT
-              </p>
-            </Link>
+
+            <p
+              onClick={() => {
+                setViewAbout(true);
+              }}
+              className={
+                pathname.startsWith("/about")
+                  ? "underline hover:opacity-55 hover:scale-95 transition-all duration-300 cursor-pointer"
+                  : "hover:opacity-55 hover:scale-95 transition-all duration-300 cursor-pointer"
+              }
+            >
+              ABOUT
+            </p>
           </div>
 
-          <Button className="nav-text hover:bg-brand-gold rounded-none hover:scale-105 transition-all duration-300">
+          <Button
+            onClick={() => {
+              router.push("/contact");
+            }}
+            className="nav-text hover:bg-brand-gold rounded-none hover:scale-105 transition-all duration-300"
+          >
             Contact us
           </Button>
         </div>
@@ -166,16 +218,15 @@ export default function Navbar() {
                 </p>
               </Link>
 
-              <Link
-                href={"/about"}
+              <p
                 onClick={() => {
                   setOpen(false);
+                  setViewAbout(true);
                 }}
+                className="hover:opacity-65 cursor-pointer hover:scale-95 w-fit transition-all duration-300"
               >
-                <p className="hover:opacity-65 cursor-pointer hover:scale-95 w-fit transition-all duration-300">
-                  ABOUT
-                </p>
-              </Link>
+                ABOUT
+              </p>
 
               <hr />
 

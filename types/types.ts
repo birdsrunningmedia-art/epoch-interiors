@@ -5,3 +5,12 @@ export type TProject = {
   projectDescription: string;
   projectSubtext: string;
 };
+
+export type TImage = {
+  id: string;
+  src: string;
+  start: {
+    top: string;
+    left: string;
+  };
+};

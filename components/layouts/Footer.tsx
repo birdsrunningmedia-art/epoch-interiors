@@ -28,9 +28,6 @@ export default function Footer() {
               <h2 className="font-bold whitespace-nowrap">Useful Links</h2>
 
               <div className="font-light flex flex-col gap-2">
-                <Link href={footerLinks.about}>
-                  <p className="hover:opacity-65 hover:scale-95">About</p>
-                </Link>
                 <Link href={footerLinks.services}>
                   <p className="hover:opacity-65 hover:scale-95">Services</p>
                 </Link>
@@ -94,6 +91,7 @@ export default function Footer() {
             src={"/images/logo.png"}
             alt="epoch logo"
             width={161 * 5}
+            loading="eager"
             height={61 * 5}
             className=""
           />
@@ -107,6 +105,7 @@ export default function Footer() {
             src={"/images/logo.png"}
             alt="epoch logo"
             width={161}
+            loading="eager"
             height={61}
             className="px-4"
           />
@@ -146,9 +145,6 @@ export default function Footer() {
                   }}
                   className="flex flex-col pt-4 px-4 gap-6"
                 >
-                  <Link href={footerLinks.about}>
-                    <p>About Us</p>
-                  </Link>
                   <Link href={footerLinks.services}>
                     <p>Services</p>
                   </Link>
