@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import {
   Field,
   FieldError,
@@ -21,6 +21,7 @@ import { toast } from "sonner";
 import { sendLeadMessage } from "../actions/actions";
 
 export default function ContactForm() {
+  const [loading, setLoading] = useState(false);
   const form = useForm({
     defaultValues: {
       name: "",
@@ -31,10 +32,23 @@ export default function ContactForm() {
   });
 
   async function onSubmit(data: z.infer<typeof leadSchema>) {
-    const res = await sendLeadMessage(data);
-    if (res) {
+    setLoading(true);
+    try {
+      const res = await sendLeadMessage(data);
+
+      if (res.success) {
+        form.reset();
+        toast.success(res.message);
+      } else {
+        form.reset();
+        toast.error(res.message);
+      }
+    } catch (error) {
       form.reset();
-      toast.error(res.message);
+      toast.error("Something went wrong. Please try again.");
+      console.error(error);
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -118,7 +132,11 @@ export default function ContactForm() {
                   </Field>
                 )}
               />
-              <button className=" p-2 bg-brand-dark text-brand-light hover:bg-brand-gold hover:scale-95 transition-all duration-300">
+              <button
+                disabled={loading}
+                type="submit"
+                className=" p-2 bg-brand-dark text-brand-light hover:bg-brand-gold hover:scale-95 transition-all duration-300"
+              >
                 SEND
               </button>
             </FieldGroup>
